@@ -1,0 +1,120 @@
+<div class="container mt-3">
+    <div class="col-md-12">
+        <div class="input-group mb-3">
+            <input type="text" (keyup.enter)="onKeyUp($event)" class="form-control" placeholder="Search Product" aria-label="Recipient's username" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+              <span class="input-group-text" id="basic-addon2" style="color: #000000;">Search Here</span>
+            </div>
+          </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+      <div class="col-md-1">
+        <div class = "item">
+            <a (click)="filter('')">
+                <img style ="width:52px;margin-top: 12px;" src="https://cdn-icons.flaticon.com/png/128/2626/premium/2626923.png?token=exp=1661110862~hmac=e1147d6c3e2931d282c28869f7c09fb6" alt="">
+                <h6>Home</h6>
+            </a>
+       </div>  
+    </div>
+
+        
+      <div class="col-md-1">
+        <div class = "item">
+            <a (click)="filter('Grocery')">
+            <img  style ="width:52px;margin-top: 12px;" src="https://cdn-icons-png.flaticon.com/512/1261/1261163.png" alt="">
+            <h6>Grocery</h6>
+            </a>
+        </div>
+    </div>
+    <div class="col-md-1">
+      <div class = "item">
+          <a (click)="filter('Mobiles')">
+          <img style ="width:52px;margin-top: 12px;" src="https://cdn-icons.flaticon.com/png/128/2586/premium/2586488.png?token=exp=1661111016~hmac=a022f49b03250be05398e2423fcb9b09" alt="">
+          <h6>Mobiles </h6>
+          </a>
+      </div>
+  </div>
+  <div class="col-md-1">
+    <div class = "item">
+        <a (click)="filter('Fashion')">
+        <img  style ="width:52px;margin-top: 12px;"  src="https://cdn-icons-png.flaticon.com/128/2258/2258432.png" alt="">
+        <h6>Fashion</h6>
+        </a>
+    </div>
+</div>
+
+      
+  
+        <div class="col-md-1">
+            <div class = "item">
+                <a (click)="filter('Electronics')">
+                <img style ="width:52px;margin-top: 12px;" src="https://cdn-icons.flaticon.com/png/128/3659/premium/3659898.png?token=exp=1661111174~hmac=bfd8a80c5bfc80ed9761a9d43df1958a" alt="">
+                <h6>Electronics</h6>
+                </a>
+            </div>
+        </div>
+
+        <div class="col-md-1">
+            <div class = "item">
+                <a (click)="filter('Toys')">
+                <img  style ="width:52px;margin-top: 12px;" src="https://cdn-icons-png.flaticon.com/128/852/852907.png" alt="">
+                <h6>Toys</h6>
+                </a>
+            </div>
+        </div>
+        
+</div>
+</div>
+
+<div class="container mt-4" *ngIf="flag===false">
+        <div class="row">
+            <div *ngFor="let product of filterCategory | filter:searchKey:'pname'" class="col-lg-3">
+            <div class="card mt-4">
+                <div class="profile-pic">
+              <img src="{{product.url}}" class="rounded mx-auto d-block mt-4" style="width: 100px;height: 150px;" alt="...">
+              <div class="edit"><a (click)="addToWishlist(product)"><i class="fa fa-heart fa-lg"></i></a></div>
+            </div>
+              <div class="card-body">
+                <h5 class="card-title text-center">{{product.pname}}</h5>
+              </div>
+              <ul class="list-group list-group-flush">
+            
+                <li class="list-group-item"><b>	&#x20B9;&nbsp;{{product.price}}</b> &nbsp;&nbsp;<del>{{product.price+100}}</del>&nbsp;&nbsp;<span>Save</span></li>
+                
+              </ul>
+              <div class="card-body text-center">
+                <button class="btn btn-primary"  (click)="addtocart(product)">Add to Cart</button>
+              </div>
+            </div>
+        </div>
+          </div>
+   </div>
+   <div class="container mt-4" *ngIf="flag===true">
+    <div class="row">
+        <div *ngFor="let product of items" class="col-lg-3">
+        <div class="card mt-4">
+            <div class="profile-pic">
+          <img src="{{product.url}}" class="rounded mx-auto d-block mt-4" style="width: 150px;height: 240px;" alt="...">
+          <div class="edit"><a (click)="addToWishlist(product)"><i class="fa fa-heart fa-lg"></i></a></div>
+        </div>
+          <div class="card-body">
+            <h5 class="card-title text-center">{{product.pname}}</h5>
+          </div>
+          <ul class="list-group list-group-flush">
+        
+            <li class="list-group-item"><b>	&#x20B9;&nbsp;{{product.price}}</b> &nbsp;&nbsp;<del>{{product.price+100}}</del>&nbsp;&nbsp;<span>Save</span></li>
+            
+          </ul>
+          <div class="card-body text-center">
+            <button class="btn btn-primary"  (click)="addtocart(product)">Add to Cart</button>
+          </div>
+        </div>
+    </div>
+      </div>
+</div>     
+
+    
+    
+
